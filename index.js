@@ -1,5 +1,5 @@
 function camelifyString(str) {
-  return str.replace(/\-([a-z]{1})/g, function (a, s) { return s.toUpperCase(); }, 'g');
+  return str.replace(/\-([a-z0-9]{1})/g, function (a, s) { return s.toUpperCase(); }, 'g');
 }
 
 module.exports = function camelify(obj) {
