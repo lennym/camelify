@@ -24,6 +24,17 @@ describe('camelify', function () {
         });
     });
 
+    it('can handle object keys with numbers', function () {
+        var input = {
+            'address-line-1': 1,
+            'address-line-2-1': 2
+        };
+        camelify(input).should.eql({
+            addressLine1: 1,
+            addressLine21: 2
+        });
+    });
+
     it('returns a camelified string if passed a string', function () {
         camelify('hyphen-separated').should.equal('hyphenSeparated');
     });
