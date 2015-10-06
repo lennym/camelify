@@ -35,6 +35,21 @@ describe('camelify', function () {
         });
     });
 
+    it('can handle object as value', function () {
+        var input = {
+            'foo-bar-baz-level1_1': {
+                'foo-bar-baz-level2': 1
+            },
+            'foo-bar-baz-level1_2': 2
+        };
+        camelify(input).should.eql({
+            fooBarBazLevel1_1: {
+                fooBarBazLevel2: 1
+            },
+            fooBarBazLevel1_2: 2
+        });
+    });
+
     it('returns a camelified string if passed a string', function () {
         camelify('hyphen-separated').should.equal('hyphenSeparated');
     });

@@ -12,7 +12,12 @@ module.exports = function camelify(obj) {
   var output = {};
   for (var i in obj) {
     if (typeof i === 'string') {
-      output[camelifyString(i)] = obj[i];
+      var key = camelifyString(i);
+      if (typeof obj[i] !== 'object') {
+        output[key] = obj[i];
+      } else {
+        output[key] = camelify(obj[i]);
+      }
     } else {
       output[i] = obj[i];
     }
